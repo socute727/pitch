@@ -28,17 +28,17 @@ def get_distro_name():
 def get_window_manager():
     wm = subprocess.run(['wmctrl', '-m'], capture_output=True, text=True)
     wm_name = wm.stdout.split('\n')[0].split(':')[1].strip()
-    if wm_name:
-        return wm_name
+    wlctrl_path = '/bin/wmctrl'
+    display_env = os.getenv('DISPLAY')
+    if display_env:
+        if wm_name:
+            return wm_name
+        elif os.path.exist(wlctrl_path):
+            return 'Unknown'
+        else:
+            return 'Try to install wmctrl'
     else:
         return 'Unknown'
-
-def get_display_server():
-    wayland_check = subprocess.run(['loginctl', 'show-session', '--property=Type', str(subprocess.check_output(['loginctl', 'list-sessions']).decode().split(' ')[0])], capture_output=True, text=True)
-    if "wayland" in wayland_check.stdout.lower():
-        return "Wayland"
-    else:
-        return "X11"
 
 def get_shell():
     shell_path = os.getenv('SHELL')
@@ -131,15 +131,15 @@ else:
 
 
 print(print_logo())
-print("  ")
-print("|", Red + "" + Reset, "user:        |", Red + get_username() + Reset)
-print("|", Yellow + "" + Reset, "hname:       |", Yellow + get_hostname() + Reset)
-print("|", Green + "" + Reset, "distro:      |", Green + get_distro_name() + Reset)
-print("|", Purple + "󰌽" + Reset, "kernel:      |", Purple + get_kernel_info() + Reset)
-print("| ", Cyan + "" + Reset, " WM:          | ", Cyan + get_window_manager(), "(", get_display_server(), ")" + Reset, sep = "")
-print("|", Yellow + "" + Reset, "shell        |", Yellow + get_shell() + Reset)
-print("|", Purple + "󰜎" + Reset, "init system: |", Purple + get_init_system() + Reset)
-print("|", Cyan + "" + Reset, "memory:      |", Cyan + get_memory_info(), "|", get_total_memory() + Reset)
-print("  ")
-print("|  colors:      |", Red + "  " + Yellow + "  " + Green + "  " + Purple + "  " + Cyan + "  " + Reset, " ")
-print("  ")
+print("╭────────────────╮")
+print("│", Red + "" + Reset, "user:        │", Red + get_username() + Reset)
+print("│", Yellow + "" + Reset, "hname:       │", Yellow + get_hostname() + Reset)
+print("│", Green + "" + Reset, "distro:      │", Green + get_distro_name() + Reset)
+print("│", Purple + "󰌽" + Reset, "kernel:      │", Purple + get_kernel_info() + Reset)
+print("│ ", Cyan + "" + Reset, " WM:          │ ", Cyan + get_window_manager() + Reset, sep = "")
+print("│", Yellow + "" + Reset, "shell        │", Yellow + get_shell() + Reset)
+print("│", Purple + "󰜎" + Reset, "init system: │", Purple + get_init_system() + Reset)
+print("│", Cyan + "" + Reset, "memory:      │", Cyan + get_memory_info(), "|", get_total_memory() + Reset)
+print("├────────────────┤")
+print("│  colors:      │", Red + "  " + Yellow + "  " + Green + "  " + Purple + "  " + Cyan + "  " + Reset, " ")
+print("╰────────────────╯")
