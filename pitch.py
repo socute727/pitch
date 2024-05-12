@@ -119,6 +119,14 @@ elif "artix" in get_distro_name().lower():
         print(" / ___ |/ /  / /_/ />  <  ")
         print("/_/  |_/_/   \\__/_/_/|_|  " + Reset)
         return ""
+elif "fefora" in get_distro_name().lower():
+    def print_logo():
+        print(Cyan + "    ____         __                ")
+        print("   / __/__  ____/ /___  _________ _")
+        print("  / /_/ _ \/ __  / __ \/ ___/ __ `/")
+        print(" / __/  __/ /_/ / /_/ / /  / /_/ /  ")
+        print("/_/  \___/\__,_/\____/_/   \__,_/   " + Reset)
+        return ""
 else:
     def print_logo():
         print(Green + "    ____  _ __       __ ")
