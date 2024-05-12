@@ -1,4 +1,10 @@
 # Pitch
+## Supported distros:
+-arch
+-artix
+-void
+-gentoo
+
 ## Installation:
 
 `git clone https://github.com/socute727/pitch/`
