@@ -1,8 +1,12 @@
 # Pitch
 ## Supported distros:
+
 -arch
+
 -artix
+
 -void
+
 -gentoo
 
 ## Installation:
