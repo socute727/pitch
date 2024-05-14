@@ -34,7 +34,7 @@ def get_distro_name():
         distro_name = distro_full_info.split(':')[1].strip()
         return distro_name
     else:
-        return 'Unknown or redhut distro'
+        return 'Unknown or redhat distro'
 
 def get_window_manager():
     if os.path.exists('/bin/wmctrl'):
