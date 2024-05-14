@@ -1,4 +1,4 @@
-# Pitch
+# pitch
 ## Installation:
 
 `git clone https://github.com/socute727/pitch/`
