@@ -1,3 +1,4 @@
+sudo rm -fv /usr/local/bin/pitchsourcecode
 sudo rm -fv /usr/local/bin/pitch
 sudo mkdir /usr/local/bin/pitchsourcecode
 sudo mv pitch.py /usr/local/bin/pitchsourcecode
