@@ -28,19 +28,29 @@ def get_hostname():
     return run_command(['uname', '-n'])
 
 def get_distro_name():
-    result = run_command(['lsb_release', '-d'])
-    if result:
-        return result.split(':')[1].strip()
+    if os.path.exists('/bin/lsb_release'):
+        result = subprocess.run(['lsb_release', '-d'], capture_output=True, text=True)
+        distro_full_info = result.stdout.strip()
+        distro_name = distro_full_info.split(':')[1].strip()
+        return distro_name
     else:
-        return 'Unknown or Red Hat-based distro'
+        return 'Unknown or redhut distro'
 
 def get_window_manager():
-    result = run_command(['wmctrl', '-m'])
-    return result.split('\n')[0].split(':')[1].strip() if result else 'try to install/update wmctrl'
+    if os.path.exists('/bin/wmctrl'):
+        wm = subprocess.run(['wmctrl', '-m'], capture_output=True, text=True)
+        wm_name = wm.stdout.split('\n')[0].split(':')[1].strip()
+        return wm_name
+    else:
+        wm_name = "try to install/update wmctrl"
+        return wm_name
 
 def get_shell():
     shell_path = os.getenv('SHELL')
-    return shell_path.split('/')[-1] if shell_path else "Unknown"
+    if shell_path:
+        return shell_path.split('/')[-1]
+    else:
+        return "Unknown"
 
 def get_memory_info():
     result = run_command(['free', '-h'])
