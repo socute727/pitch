@@ -9,4 +9,4 @@
 
 # Screenshots
 
-![2024-05-12_17-18](https://github.com/socute727/pitch/assets/152518983/44b9a147-c425-4813-83c3-bf8c223726af)
+![2024-05-14_22-47](https://github.com/socute727/pitch/assets/152518983/b28e8c4f-9e94-4f6f-933b-dadf07fb76ac)
