@@ -125,7 +125,6 @@ else:
 
 # Here you can configurate wich information would display 
 
-print()
 print(print_logo())
 print("╭─────      ───────╮")
 #print("User:", White + get_username() + Reset)
